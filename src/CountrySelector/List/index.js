@@ -25,8 +25,8 @@ const List = ({
   const listRef = useRef(null);
 
   const itemHeight = 36;
-  const maxVisibleItemNumber = 4;
-  const defaultPosition = 2;
+  const maxVisibleItemNumber = 5;
+  const defaultPosition = 3;
   const currentIndex = countryList.findIndex((country) => country.name ===selectedCountry);
 
   useEffect(() => {
