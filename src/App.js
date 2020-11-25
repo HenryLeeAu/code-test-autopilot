@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from 'react';
 
-function App() {
+import { useDispatch, useSelector } from 'react-redux';
+
+import styled from 'styled-components'
+
+import CountrySelector from './CountrySelector';
+
+import { fetchCountryList } from './redux/actions/countries'
+
+const AppWrapper = styled.div`
+  max-width:640px;
+  margin: 0 auto;
+  padding-top:15px;
+`
+
+
+const App = () => {
+  const dispatch = useDispatch()
+  const countryList = useSelector((state) => state.countries.list);
+  const loadingStatus= useSelector((state) => state.countries.status);
+
+  useEffect(() => {
+    dispatch(fetchCountryList())
+  },[dispatch])
+
+
+  console.log(countryList)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppWrapper>
+      <CountrySelector
+        countryList={countryList}
+        loadingStatus={loadingStatus}
+      />
+    </AppWrapper>
+  )
 }
 
 export default App;
