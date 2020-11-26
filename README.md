@@ -34,13 +34,15 @@
 ![Image of example1](https://i.ibb.co/xDzD8qZ/example1.png)
 
 - User can use input to find matched country or open the dropdown menu to select
-- support click away
-- when user update the text from input, the selected country will be reset
+- Support click away
+- When user update the text from input, the selected country will be reset
 
 ## advance
 
 ![Image of example2](https://i.ibb.co/SRCCBPq/example2.png)
-Please feel free to try the customised api, it supports different size, default position, and different number of countries at one time.
+ - Supports different size
+ - Default opening position
+ - Different number of countries at one time.
 
 ## How to install
 
