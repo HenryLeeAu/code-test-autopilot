@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
-import { useState, useEffect, useRef } from "react";
+import * as React from "react";
 
 import InputBox from "./InputBox";
 import List from "./List";
+import { CountryItemT } from "../redux/type";
 
 const CountrySelectorWrapper = styled.div`
   position: relative;
@@ -30,10 +31,13 @@ const CountrySelector: React.FC<Props> = ({
   itemHeight,
   ...restProps
 }) => {
-  const [open, setOpen] = useState(false);
-  const [searchText, setSearchText] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState(null);
-  const selectorRef = useRef(null);
+  const [open, setOpen] = React.useState(false);
+  const [searchText, setSearchText] = React.useState("");
+  const [
+    selectedCountry,
+    setSelectedCountry,
+  ] = React.useState<CountryItemT | null>(null);
+  const selectorRef = React.useRef<HTMLDivElement>(null);
 
   const onInputFocus = () => {
     setOpen(true);
@@ -44,20 +48,25 @@ const CountrySelector: React.FC<Props> = ({
     setSelectedCountry(null);
   };
 
-  const changeSelectedCountry = (countryObj) => {
+  const changeSelectedCountry = (countryObj: CountryItemT): void => {
     onSelect(countryObj);
     setSearchText(countryObj.name);
     setSelectedCountry(countryObj);
     setOpen(false);
   };
 
-  const clickAwayListener = (e) => {
-    if (selectorRef.current && !selectorRef.current.contains(e.target)) {
+  const clickAwayListener: any = (
+    e: React.MouseEvent<HTMLDivElement>
+  ): void => {
+    if (
+      selectorRef.current &&
+      !selectorRef.current.contains(e.target as Node)
+    ) {
       setOpen(false);
     }
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     document.addEventListener("click", clickAwayListener);
 
     return () => {

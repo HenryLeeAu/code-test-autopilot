@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { fetchCountryList } from "./redux/actions/countries";
 
 import CountrySelector from "./CountrySelector";
+import { RootState } from "./redux/type";
 
 const AppWrapper = styled.div`
   max-width: 640px;
@@ -14,15 +15,17 @@ const AppWrapper = styled.div`
 
 const App = () => {
   const dispatch = useDispatch();
-  const countryList = useSelector((state) => state.countries.list);
-  const loadingStatus = useSelector((state) => state.countries.status);
+  const countryList = useSelector((state: RootState) => state.countries.list);
+  const loadingStatus = useSelector(
+    (state: RootState) => state.countries.status
+  );
 
-  const [visibleNumber, setVisibleNumber] = useState("7");
-  const [position, setPosition] = useState("4");
-  const [itemSize, setItemSize] = useState("50");
-  const [selectedData, setSelectedData] = useState("");
+  const [visibleNumber, setVisibleNumber] = React.useState("7");
+  const [position, setPosition] = React.useState("4");
+  const [itemSize, setItemSize] = React.useState("50");
+  const [selectedData, setSelectedData] = React.useState("");
 
-  useEffect(() => {
+  React.useEffect(() => {
     dispatch(fetchCountryList());
   }, [dispatch]);
 
@@ -43,11 +46,8 @@ const App = () => {
         <div>Change default position </div>
         <input value={position} onChange={(e) => setPosition(e.target.value)} />
         <div>Change item size </div>
-        <input
-          value={itemSize}
-          onChange={(e) => setItemSize(e.target.value)}
-        />{" "}
-        px
+        <input value={itemSize} onChange={(e) => setItemSize(e.target.value)} />
+        spx
         <div>
           <CountrySelector
             countryList={countryList}
