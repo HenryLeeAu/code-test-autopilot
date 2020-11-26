@@ -27,10 +27,6 @@ const CountrySelector = ({
     setOpen(true);
   }
 
-  const onInputBlur = () => {
-    //setOpen(false);
-  }
-
   const onTextChange = (e) => {
     setSearchText(e.target.value)
     setSelectedCountry('')
@@ -66,7 +62,6 @@ const CountrySelector = ({
       <InputBox
         {...restProps}
         onFocus={onInputFocus}
-        onBlur={onInputBlur}
         onChange={onTextChange}
         text={searchText}
         open={open}

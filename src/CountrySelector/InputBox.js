@@ -31,7 +31,6 @@ const FlagIcon = styled.img`
 `
 const InputBox = ({
   onFocus,
-  onBlur,
   onChange,
   text,
   open,
@@ -52,8 +51,6 @@ const InputBox = ({
     <Input
       {...restProps}
       placeholder="Select"
-      onFocus={onFocus}
-      onBlur={onBlur}
       onChange={onChange}
       value={text}
       open={open}

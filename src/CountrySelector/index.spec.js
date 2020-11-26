@@ -10,9 +10,9 @@ describe('<CountrySelector />', () => {
       {name:'Japan', flag:'http://url3/'},
       {name:'Australia', flag:'http://url4/'},
       {name:'Austria', flag:'http://url5/'},
-      {name:'f', flag:'http://url6/'},
-      {name:'g', flag:'http://url7/'},
-      {name:'h', flag:'http://url8/'},
+      {name:'United States of America', flag:'http://url6/'},
+      {name:'United Kingdom of Great Britain and Northern Ireland', flag:'http://url7/'},
+      {name:'China', flag:'http://url8/'},
     ]
   }
 

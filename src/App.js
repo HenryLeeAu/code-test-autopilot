@@ -24,29 +24,35 @@ const App = () => {
     dispatch(fetchCountryList())
   },[dispatch])
 
+  if(loadingStatus === 'SUCCESS') {
+    return (
+      <AppWrapper>
+        <CountrySelector
+          countryList={countryList}
+          onSelect={(data) => console.log(data)}
+        />
+        <ul>
+          <li>other content on the page</li>
+          <li>other content on the page</li>
 
-  return (
-    <AppWrapper>
-      <CountrySelector
-        countryList={countryList}
-        onSelect={(data) => console.log(data)}
-      />
-      <ul>
-        <li>other content on the page</li>
-        <li>other content on the page</li>
+        </ul>
 
-      </ul>
+        <h2>It can also support dynamic item size and position</h2>
+        <CountrySelector
+          countryList={countryList}
+          onSelect={(data) => console.log(data)}
+          maxVisibleNumber={7}
+          defaultPosition={6}
+          itemHeight={50}
+         />
+      </AppWrapper>
+    )
+  }
+  if(loadingStatus === 'LOADING') {
+    return <div>Waiting for data</div>
+  }
+  return null;
 
-      <h2>It can also support dynamic item size and position</h2>
-      <CountrySelector
-        countryList={countryList}
-        onSelect={(data) => console.log(data)}
-        maxVisibleNumber={7}
-        defaultPosition={6}
-        itemHeight={50}
-       />
-    </AppWrapper>
-  )
 }
 
 export default App;
