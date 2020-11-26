@@ -20,7 +20,7 @@ const CountrySelector = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState('')
-  const [selectedCountry, setSelectedCountry] = useState('');
+  const [selectedCountry, setSelectedCountry] = useState(null);
   const selectorRef = useRef();
 
   const onInputFocus = () => {
@@ -29,13 +29,13 @@ const CountrySelector = ({
 
   const onTextChange = (e) => {
     setSearchText(e.target.value)
-    setSelectedCountry('')
+    setSelectedCountry(null)
   }
 
-  const changeSelectedCountry = (text) => {
-    onSelect(countryList?.find(country =>country.name === text))
-    setSearchText(text)
-    setSelectedCountry(text)
+  const changeSelectedCountry = (countryObj) => {
+    onSelect(countryObj)
+    setSearchText(countryObj.name)
+    setSelectedCountry(countryObj)
     setOpen(false);
 
   }
@@ -65,7 +65,7 @@ const CountrySelector = ({
         onChange={onTextChange}
         text={searchText}
         open={open}
-        flagSrc={countryList?.find((country) => country.name=== selectedCountry)?.flag}
+        flagSrc={selectedCountry?.flag}
       />
       <List
         open={open}

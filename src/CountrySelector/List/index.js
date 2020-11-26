@@ -29,7 +29,7 @@ const List = ({
 }) => {
   const listRef = useRef(null);
 
-  const currentIndex = countryList?.findIndex((country) => country.name ===selectedCountry);
+  const currentIndex = countryList?.findIndex((country) => country.name ===selectedCountry?.name);
 
   useEffect(() => {
     if(listRef?.current && open && countryList?.length) {
@@ -46,6 +46,11 @@ const List = ({
     }
   },[listRef, open, countryList, currentIndex, maxVisibleNumber, defaultPosition, itemHeight])
 
+  const listFilter = ({name}) => (
+    // show all countries when selectedCountry exists
+    // or show matched string countries list ( include match empty string '')
+    selectedCountry || name.toLowerCase().includes(currentText.toLowerCase())
+  )
   return (
     <ListWrapper
       open={open}
@@ -53,14 +58,14 @@ const List = ({
       ref={listRef}
     >
         {
-          countryList?.filter(({name}) => selectedCountry || name.toLowerCase().includes(currentText.toLowerCase())).map((country) => (
+          countryList?.filter(listFilter).map((country) => (
             <Item
               key={country.name}
               name={country.name}
               itemHeight={itemHeight}
               flagUrl={country.flag}
-              onClick={() =>changeSelectedCountry(country.name)}
-              highlight={country.name === selectedCountry}
+              onClick={() =>changeSelectedCountry(country)}
+              highlight={country.name === selectedCountry?.name}
             />
           ))
         }
