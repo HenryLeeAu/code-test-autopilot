@@ -12,7 +12,7 @@ Props table for CountrySelector
 | defaultPosition | number|    3 |  default position of selected country when user open the dropdown
 | itemHeight | number|    36 |  each country ui height in dropdown
 
-![Image of example1](https://ibb.co/XbFbkxH)
+![Image of example1](https://i.ibb.co/xDzD8qZ/example1.png)
 
 ### `yarn start`
 
