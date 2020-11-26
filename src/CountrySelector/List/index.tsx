@@ -16,7 +16,7 @@ type Props = {
   itemHeight?: number;
 };
 
-const ListWrapper = styled("div")<{ isOpen: boolean; maxHeight: number }>`
+const ListWrapper = styled.div<{ isOpen: boolean; maxHeight: number }>`
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
   background: #fff;
   border-radius: 4px;
@@ -80,14 +80,14 @@ const List: React.FC<Props> = ({
       ref={listRef}
     >
       {countryList?.filter(listFilter).map((country) => (
-        <Item
-          key={country.name}
-          name={country.name}
-          itemHeight={itemHeight}
-          flagUrl={country.flag}
-          onClick={() => changeSelectedCountry(country)}
-          highlight={country.name === selectedCountry?.name}
-        />
+        <div key={country.name} onClick={() => changeSelectedCountry(country)}>
+          <Item
+            name={country.name}
+            itemHeight={itemHeight}
+            flagUrl={country.flag}
+            highlight={country.name === selectedCountry?.name}
+          />
+        </div>
       ))}
     </ListWrapper>
   );

@@ -6,7 +6,7 @@ type Props = {
   itemHeight: number;
   name: string;
   flagUrl: string;
-  onClick: () => void;
+  //onClick: () => void;
   highlight: boolean;
 };
 
@@ -44,16 +44,9 @@ const Text = styled.div<{ itemHeight: number; highlight: boolean }>`
   }
 `;
 
-const Item: React.FC<Props> = ({
-  itemHeight,
-  name,
-  flagUrl,
-  onClick,
-  highlight,
-}) => (
+const Item: React.FC<Props> = ({ itemHeight, name, flagUrl, highlight }) => (
   <ItemWrapper
     itemHeight={itemHeight}
-    onClick={onClick}
     highlight={highlight}
     data-testid="country-item"
   >
@@ -68,4 +61,4 @@ const Item: React.FC<Props> = ({
   </ItemWrapper>
 );
 
-export default Item;
+export default React.memo(Item);
