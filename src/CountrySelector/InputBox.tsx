@@ -62,6 +62,7 @@ const InputBox: React.FC<Props> = ({
         value={text}
         isOpen={isOpen}
         flagExist={!!flagSrc}
+        type="text"
       />
       <ArrowIcon src={arrowDown} alt="arrow" />
     </InputWrapper>

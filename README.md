@@ -7,6 +7,7 @@
 | maxVisibleNumber | number|    5 | number of countries are showing in scroll visible view
 | defaultPosition | number|    3 |  default position of selected country when user open the dropdown
 | itemHeight | number|    36 |  each country ui height in dropdown
+| {...otherprops} | any|     |  will map these props on input element such as data-testid
 
 
 ## Usage
@@ -27,6 +28,8 @@
     maxVisibleNumber={7}
     defaultPosition={4}
     itemHeight={30}
+    data-testid="my-test-id"
+    className="my-class-name"
   />
 ```
 
