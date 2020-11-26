@@ -29,7 +29,6 @@
     defaultPosition={4}
     itemHeight={30}
     data-testid="my-test-id"
-    className="my-class-name"
   />
 ```
 
