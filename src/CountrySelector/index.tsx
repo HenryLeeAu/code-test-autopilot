@@ -30,7 +30,7 @@ const CountrySelector: React.FC<Props> = ({
   itemHeight,
   ...restProps
 }) => {
-  const [open, setOpen] = React.useState(false);
+  const [isOpen, setOpen] = React.useState(false);
   const [searchText, setSearchText] = React.useState("");
   const [
     selectedCountry,
@@ -80,11 +80,11 @@ const CountrySelector: React.FC<Props> = ({
         onFocus={onInputFocus}
         onChange={onTextChange}
         text={searchText}
-        isOpen={open}
+        isOpen={isOpen}
         flagSrc={selectedCountry?.flag}
       />
       <List
-        open={open}
+        isOpen={isOpen}
         countryList={countryList}
         currentText={searchText}
         changeSelectedCountry={changeSelectedCountry}

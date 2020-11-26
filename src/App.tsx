@@ -28,42 +28,53 @@ const App = () => {
     dispatch(fetchCountryList());
   }, [dispatch]);
 
-  if (loadingStatus === "SUCCESS") {
-    return (
-      <AppWrapper>
-        <h2>Default example</h2>
-        <CountrySelector
-          countryList={countryList}
-          onSelect={(data) => console.log(data)}
-        />
-        <h2>CountrySelector can also support dynamic item size and position</h2>
-        <div>Change visible number</div>
-        <input
-          value={visibleNumber}
-          onChange={(e) => setVisibleNumber(e.target.value)}
-        />
-        <div>Change default position </div>
-        <input value={position} onChange={(e) => setPosition(e.target.value)} />
-        <div>Change item size </div>
-        <input value={itemSize} onChange={(e) => setItemSize(e.target.value)} />
-        spx
-        <div>
+  switch (loadingStatus) {
+    case "SUCCESS":
+      return (
+        <AppWrapper>
+          <h2>Default example</h2>
           <CountrySelector
             countryList={countryList}
-            onSelect={(data) => setSelectedData(data.name)}
-            maxVisibleNumber={Number(visibleNumber)}
-            defaultPosition={Number(position)}
-            itemHeight={Number(itemSize)}
+            onSelect={(data) => console.log(data)}
           />
-        </div>
-        your are selecting {selectedData}
-      </AppWrapper>
-    );
+          <h2>
+            CountrySelector can also support dynamic item size and position
+          </h2>
+          <div>Change visible number</div>
+          <input
+            value={visibleNumber}
+            onChange={(e) => setVisibleNumber(e.target.value)}
+          />
+          <div>Change default position </div>
+          <input
+            value={position}
+            onChange={(e) => setPosition(e.target.value)}
+          />
+          <div>Change item size </div>
+          <input
+            value={itemSize}
+            onChange={(e) => setItemSize(e.target.value)}
+          />
+          spx
+          <div>
+            <CountrySelector
+              countryList={countryList}
+              onSelect={(data) => setSelectedData(data.name)}
+              maxVisibleNumber={Number(visibleNumber)}
+              defaultPosition={Number(position)}
+              itemHeight={Number(itemSize)}
+            />
+          </div>
+          your are selecting {selectedData}
+        </AppWrapper>
+      );
+    case "LOADING":
+      return <div>Waiting for data</div>;
+    case "FAILED":
+      return <div>Internet error, please refresh page</div>;
+    default:
+      return null;
   }
-  if (loadingStatus === "LOADING") {
-    return <div>Waiting for data</div>;
-  }
-  return null;
 };
 
 export default App;

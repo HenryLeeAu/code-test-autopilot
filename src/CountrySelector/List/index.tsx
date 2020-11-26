@@ -7,7 +7,7 @@ import { CountryItemT } from "../../redux/type";
 
 type Props = {
   countryList: CountryItemT[];
-  open: boolean;
+  isOpen: boolean;
   currentText: string;
   changeSelectedCountry: (country: CountryItemT) => void;
   selectedCountry: CountryItemT | null;
@@ -30,7 +30,7 @@ const ListWrapper = styled("div")<{ isOpen: boolean; maxHeight: number }>`
 
 const List: React.FC<Props> = ({
   countryList,
-  open,
+  isOpen,
   currentText,
   changeSelectedCountry,
   selectedCountry,
@@ -44,7 +44,7 @@ const List: React.FC<Props> = ({
   );
 
   React.useEffect(() => {
-    if (listRef?.current && open && countryList?.length) {
+    if (listRef?.current && isOpen && countryList?.length) {
       const currentPosition = getCurrentScrollTop({
         maxVisibleNumber,
         // it will use maxVisibleNumber as defaultPosition if default selected position beyond the range
@@ -60,7 +60,7 @@ const List: React.FC<Props> = ({
     }
   }, [
     listRef,
-    open,
+    isOpen,
     countryList,
     currentIndex,
     maxVisibleNumber,
@@ -75,7 +75,7 @@ const List: React.FC<Props> = ({
 
   return (
     <ListWrapper
-      isOpen={open}
+      isOpen={isOpen}
       maxHeight={itemHeight * maxVisibleNumber}
       ref={listRef}
     >

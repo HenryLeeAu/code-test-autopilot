@@ -4,7 +4,7 @@ export interface CountryItemT {
 }
 
 export interface CountryT {
-  status: string | null;
+  status: "SUCCESS" | "LOADING" | "FAILED" | null;
   list: CountryItemT[];
 }
 
