@@ -45,11 +45,15 @@ const Item = ({
       itemHeight={itemHeight}
       onClick={onClick}
       highlight={highlight}
+      data-testid='country-item'
     >
-      <FlagImg src={flagUrl} />
+      <FlagImg
+        data-testid='country-flag'
+        src={flagUrl}/>
       <Text
         itemHeight={itemHeight}
         highlight={highlight}
+        data-testid='country-name'
       >{name}</Text>
     </ItemWrapper>
   )

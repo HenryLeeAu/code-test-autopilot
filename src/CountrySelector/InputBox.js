@@ -35,7 +35,8 @@ const InputBox = ({
   onChange,
   text,
   open,
-  flagSrc = ""
+  flagSrc = "",
+  ...restProps
 }) => {
   return (
   <InputWrapper onClick={onFocus}>
@@ -44,10 +45,12 @@ const InputBox = ({
         <FlagIcon
           src={flagSrc}
           alt="arrow"
+          data-testid='country-selector-input-lag'
         />
        )
      }
     <Input
+      {...restProps}
       placeholder="Select"
       onFocus={onFocus}
       onBlur={onBlur}

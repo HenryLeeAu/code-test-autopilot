@@ -12,7 +12,7 @@ const CountrySelectorWrapper = styled.div`
 
 const CountrySelector = ({
   countryList,
-  onSelect,
+  onSelect = () => {},
   maxVisibleNumber,
   defaultPosition,
   itemHeight,
@@ -64,6 +64,7 @@ const CountrySelector = ({
       ref={selectorRef}
       >
       <InputBox
+        {...restProps}
         onFocus={onInputFocus}
         onBlur={onInputBlur}
         onChange={onTextChange}
