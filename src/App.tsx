@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { fetchCountryList } from "./redux/actions/countries";
-
 import CountrySelector from "./CountrySelector";
 import { RootState } from "./redux/type";
 
