@@ -13,6 +13,7 @@ const ListWrapper = styled.div`
   max-height: ${({maxHeight}) => `${maxHeight}px`};
   overflow: auto;
   position: absolute;
+  z-index: 100;
 `
 
 const List = ({
@@ -21,18 +22,19 @@ const List = ({
   currentText,
   changeSelectedCountry,
   selectedCountry,
+  maxVisibleNumber= 5,
+  defaultPosition =3,
+  itemHeight = 36,
+
 }) => {
   const listRef = useRef(null);
 
-  const itemHeight = 36;
-  const maxVisibleItemNumber = 5;
-  const defaultPosition = 3;
-  const currentIndex = countryList.findIndex((country) => country.name ===selectedCountry);
+  const currentIndex = countryList?.findIndex((country) => country.name ===selectedCountry);
 
   useEffect(() => {
-    if(listRef?.current && open) {
+    if(listRef?.current && open && countryList?.length) {
      const currentPosition = getCurrentScrollTop({
-        maxVisibleItemNumber,
+        maxVisibleNumber,
         position:defaultPosition,
         currentIndex,
         itemHeight,
@@ -42,16 +44,16 @@ const List = ({
       listRef.current.scrollLeft = 0;
 
     }
-  },[listRef, open, countryList.length, currentIndex])
+  },[listRef, open, countryList, currentIndex, maxVisibleNumber, defaultPosition, itemHeight])
 
   return (
     <ListWrapper
       open={open}
-      maxHeight={itemHeight * maxVisibleItemNumber}
+      maxHeight={itemHeight * maxVisibleNumber}
       ref={listRef}
     >
         {
-          countryList.filter(({name}) => selectedCountry || name.toLowerCase().includes(currentText.toLowerCase())).map((country) => (
+          countryList?.filter(({name}) => selectedCountry || name.toLowerCase().includes(currentText.toLowerCase())).map((country) => (
             <Item
               key={country.name}
               name={country.name}

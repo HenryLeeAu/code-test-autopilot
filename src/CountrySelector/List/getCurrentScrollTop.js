@@ -1,14 +1,14 @@
 const getCurrentScrollTop = ({
-  maxVisibleItemNumber, position, currentIndex, length, itemHeight
+  maxVisibleNumber, position, currentIndex, length, itemHeight
 }) => {
 
-  const times = Math.floor((currentIndex+1) / maxVisibleItemNumber);
+  const times = Math.floor((currentIndex+1) / maxVisibleNumber);
 
-  const extraSize = (currentIndex+1) % maxVisibleItemNumber;
+  const extraSize = (currentIndex+1) % maxVisibleNumber;
 
 
   const finalTop = (
-    times * itemHeight * maxVisibleItemNumber
+    times * itemHeight * maxVisibleNumber
     + (extraSize - position) * itemHeight
   )
 

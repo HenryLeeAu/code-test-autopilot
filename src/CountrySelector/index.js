@@ -13,6 +13,10 @@ const CountrySelectorWrapper = styled.div`
 const CountrySelector = ({
   countryList,
   onSelect,
+  maxVisibleNumber,
+  defaultPosition,
+  itemHeight,
+  ...restProps
 }) => {
   const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState('')
@@ -33,7 +37,7 @@ const CountrySelector = ({
   }
 
   const changeSelectedCountry = (text) => {
-    onSelect(countryList.find(country =>country.name === text))
+    onSelect(countryList?.find(country =>country.name === text))
     setSearchText(text)
     setSelectedCountry(text)
     setOpen(false);
@@ -56,14 +60,16 @@ const CountrySelector = ({
   }, [])
 
   return (
-    <CountrySelectorWrapper ref={selectorRef}>
+    <CountrySelectorWrapper
+      ref={selectorRef}
+      >
       <InputBox
         onFocus={onInputFocus}
         onBlur={onInputBlur}
         onChange={onTextChange}
         text={searchText}
         open={open}
-        flagSrc={countryList.find((country) => country.name=== selectedCountry)?.flag}
+        //flagSrc={countryList?.find((country) => country.name=== selectedCountry)?.flag}
       />
       <List
         open={open}
@@ -71,6 +77,9 @@ const CountrySelector = ({
         currentText={searchText}
         changeSelectedCountry={changeSelectedCountry}
         selectedCountry={selectedCountry}
+        maxVisibleNumber={maxVisibleNumber}
+        defaultPosition={defaultPosition}
+        itemHeight={itemHeight}
       />
     </CountrySelectorWrapper>
   )

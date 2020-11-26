@@ -36,6 +36,13 @@ const App = () => {
         <li>other content on the page</li>
 
       </ul>
+      <CountrySelector
+        countryList={countryList}
+        onSelect={(data) => console.log(data)}
+        maxVisibleNumber={7}
+        defaultPosition={1}
+        itemHeight={50}
+       />
     </AppWrapper>
   )
 }
