@@ -36,11 +36,13 @@ const App = () => {
         <li>other content on the page</li>
 
       </ul>
+
+      <h2>It can also support dynamic item size and position</h2>
       <CountrySelector
         countryList={countryList}
         onSelect={(data) => console.log(data)}
         maxVisibleNumber={7}
-        defaultPosition={1}
+        defaultPosition={6}
         itemHeight={50}
        />
     </AppWrapper>

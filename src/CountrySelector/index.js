@@ -69,7 +69,7 @@ const CountrySelector = ({
         onChange={onTextChange}
         text={searchText}
         open={open}
-        //flagSrc={countryList?.find((country) => country.name=== selectedCountry)?.flag}
+        flagSrc={countryList?.find((country) => country.name=== selectedCountry)?.flag}
       />
       <List
         open={open}
