@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import {useState} from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import InputBox from './InputBox';
 import List from './List';
@@ -12,10 +12,12 @@ const CountrySelectorWrapper = styled.div`
 
 const CountrySelector = ({
   countryList,
+  onSelect,
 }) => {
   const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState('')
   const [selectedCountry, setSelectedCountry] = useState('');
+  const selectorRef = useRef();
 
   const onInputFocus = () => {
     setOpen(true);
@@ -31,14 +33,30 @@ const CountrySelector = ({
   }
 
   const changeSelectedCountry = (text) => {
+    onSelect(countryList.find(country =>country.name === text))
     setSearchText(text)
     setSelectedCountry(text)
     setOpen(false);
 
   }
 
+  const clickAwayListener = (e) => {
+    if (selectorRef.current && !selectorRef.current.contains(e.target)) {
+      setOpen(false);
+    }
+  }
+
+
+  useEffect(() => {
+    document.addEventListener('click', clickAwayListener);
+
+    return () => {
+      document.removeEventListener('click', clickAwayListener);
+    }
+  }, [])
+
   return (
-    <CountrySelectorWrapper>
+    <CountrySelectorWrapper ref={selectorRef}>
       <InputBox
         onFocus={onInputFocus}
         onBlur={onInputBlur}

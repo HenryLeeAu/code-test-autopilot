@@ -25,13 +25,17 @@ const App = () => {
   },[dispatch])
 
 
-  console.log(countryList)
   return (
     <AppWrapper>
       <CountrySelector
         countryList={countryList}
-        loadingStatus={loadingStatus}
+        onSelect={(data) => console.log(data)}
       />
+      <ul>
+        <li>other content on the page</li>
+        <li>other content on the page</li>
+
+      </ul>
     </AppWrapper>
   )
 }
