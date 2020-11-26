@@ -9,7 +9,7 @@
 | itemHeight | number|    36 |  each country ui height in dropdown
 
 
-## usage
+## Usage
 
 ```javascript
   <CountrySelector
@@ -30,14 +30,14 @@
   />
 ```
 
-## basic
+## Basic
 ![Image of example1](https://i.ibb.co/xDzD8qZ/example1.png)
 
 - User can use input to find matched country or open the dropdown menu to select
 - Support click away
 - When user update the text from input, the selected country will be reset
 
-## advance
+## Advance
 
 ![Image of example2](https://i.ibb.co/SRCCBPq/example2.png)
  - Supports different size
