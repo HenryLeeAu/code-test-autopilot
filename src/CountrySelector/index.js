@@ -1,12 +1,12 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 
-import InputBox from './InputBox';
-import List from './List';
+import InputBox from "./InputBox";
+import List from "./List";
 
 const CountrySelectorWrapper = styled.div`
-  position:relative;
+  position: relative;
   display: inline-block;
 `;
 
@@ -18,47 +18,44 @@ const CountrySelector = ({
   itemHeight,
   ...restProps
 }) => {
+  console.log(maxVisibleNumber);
   const [open, setOpen] = useState(false);
-  const [searchText, setSearchText] = useState('')
+  const [searchText, setSearchText] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
   const selectorRef = useRef();
 
   const onInputFocus = () => {
     setOpen(true);
-  }
+  };
 
   const onTextChange = (e) => {
-    setSearchText(e.target.value)
-    setSelectedCountry(null)
-  }
+    setSearchText(e.target.value);
+    setSelectedCountry(null);
+  };
 
   const changeSelectedCountry = (countryObj) => {
-    onSelect(countryObj)
-    setSearchText(countryObj.name)
-    setSelectedCountry(countryObj)
+    onSelect(countryObj);
+    setSearchText(countryObj.name);
+    setSelectedCountry(countryObj);
     setOpen(false);
-
-  }
+  };
 
   const clickAwayListener = (e) => {
     if (selectorRef.current && !selectorRef.current.contains(e.target)) {
       setOpen(false);
     }
-  }
-
+  };
 
   useEffect(() => {
-    document.addEventListener('click', clickAwayListener);
+    document.addEventListener("click", clickAwayListener);
 
     return () => {
-      document.removeEventListener('click', clickAwayListener);
-    }
-  }, [])
+      document.removeEventListener("click", clickAwayListener);
+    };
+  }, []);
 
   return (
-    <CountrySelectorWrapper
-      ref={selectorRef}
-      >
+    <CountrySelectorWrapper ref={selectorRef}>
       <InputBox
         {...restProps}
         onFocus={onInputFocus}
@@ -78,7 +75,7 @@ const CountrySelector = ({
         itemHeight={itemHeight}
       />
     </CountrySelectorWrapper>
-  )
-}
+  );
+};
 
 export default CountrySelector;
