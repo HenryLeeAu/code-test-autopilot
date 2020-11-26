@@ -20,6 +20,7 @@ const App = () => {
   const [visibleNumber, setVisibleNumber] = useState("7");
   const [position, setPosition] = useState("4");
   const [itemSize, setItemSize] = useState("50");
+  const [selectedData, setSelectedData] = useState("");
 
   useEffect(() => {
     dispatch(fetchCountryList());
@@ -50,12 +51,13 @@ const App = () => {
         <div>
           <CountrySelector
             countryList={countryList}
-            onSelect={(data) => console.log(data)}
+            onSelect={(data) => setSelectedData(data.name)}
             maxVisibleNumber={Number(visibleNumber)}
             defaultPosition={Number(position)}
             itemHeight={Number(itemSize)}
           />
         </div>
+        your are selecting {selectedData}
       </AppWrapper>
     );
   }

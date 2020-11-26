@@ -18,7 +18,6 @@ const CountrySelector = ({
   itemHeight,
   ...restProps
 }) => {
-  console.log(maxVisibleNumber);
   const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
