@@ -23,7 +23,7 @@ type Props = {
 };
 
 const CountrySelector: React.FC<Props> = ({
-  countryList,
+  countryList = [],
   onSelect = () => {},
   maxVisibleNumber,
   defaultPosition,

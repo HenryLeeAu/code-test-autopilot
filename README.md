@@ -6,6 +6,14 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+| name   |      type      |  Default value | Description
+|----------|---------------|--------------|----------|
+| countryList|  array | [] | an array of country data
+| onSelect|    function    |  () => {} |  get selected country obj from  parameter
+| maxVisibleNumber | number|    5 | number of countries are showing in scroll visible view
+| defaultPosition | number|    3 |  default position of selected country when user open the dropdown
+| itemHeight | number|    36 |  each country ui height in dropdown
+
 ### `yarn start`
 
 Runs the app in the development mode.\
