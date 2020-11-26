@@ -10,7 +10,19 @@ const CountrySelectorWrapper = styled.div`
   display: inline-block;
 `;
 
-const CountrySelector = ({
+type CountryListT = {
+  name: string;
+  flag: string;
+};
+type Props = {
+  itemHeight?: number;
+  onSelect?: (data: any) => void;
+  maxVisibleNumber?: number;
+  defaultPosition?: number;
+  countryList: CountryListT[];
+};
+
+const CountrySelector: React.FC<Props> = ({
   countryList,
   onSelect = () => {},
   maxVisibleNumber,
@@ -21,13 +33,13 @@ const CountrySelector = ({
   const [open, setOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const selectorRef = useRef();
+  const selectorRef = useRef(null);
 
   const onInputFocus = () => {
     setOpen(true);
   };
 
-  const onTextChange = (e) => {
+  const onTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setSearchText(e.target.value);
     setSelectedCountry(null);
   };
