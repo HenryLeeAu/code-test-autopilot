@@ -81,7 +81,7 @@ const CountrySelector: React.FC<Props> = ({
         onFocus={onInputFocus}
         onChange={onTextChange}
         text={searchText}
-        open={open}
+        isOpen={open}
         flagSrc={selectedCountry?.flag}
       />
       <List

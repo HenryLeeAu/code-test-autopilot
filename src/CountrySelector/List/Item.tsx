@@ -9,6 +9,7 @@ type Props = {
   onClick: () => void;
   highlight: boolean;
 };
+
 const ItemWrapper = styled.div<{ itemHeight: number; highlight: boolean }>`
   display: flex;
   font-size: 14px;
@@ -29,6 +30,7 @@ const FlagImg = styled.img`
   width: 17px;
   margin-right: 15px;
 `;
+
 const Text = styled.div<{ itemHeight: number; highlight: boolean }>`
   height: ${({ itemHeight }) => `${itemHeight}px`};
   display: flex;
@@ -41,6 +43,7 @@ const Text = styled.div<{ itemHeight: number; highlight: boolean }>`
     background: #fbfafa;
   }
 `;
+
 const Item: React.FC<Props> = ({
   itemHeight,
   name,
