@@ -2,17 +2,17 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Props table for CountrySelector
 
-In the project directory, you can run:
-
-| name   |      type      |  Default value | Description
+| Name   |      Type      |  Default value | Description
 |----------|---------------|--------------|----------|
 | countryList|  array | [] | an array of country data
-| onSelect|    function    |  () => {} |  get selected country obj from  parameter
+| onSelect|    function    |  () => {} |  get selected country obj from function parameter
 | maxVisibleNumber | number|    5 | number of countries are showing in scroll visible view
 | defaultPosition | number|    3 |  default position of selected country when user open the dropdown
 | itemHeight | number|    36 |  each country ui height in dropdown
+
+![Image of example1](https://ibb.co/XbFbkxH)
 
 ### `yarn start`
 
