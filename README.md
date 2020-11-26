@@ -44,7 +44,7 @@
  - Default opening position
  - Different number of countries at one time.
 
-## How to install
+## How to try this project
 
 ### `yarn start`
 
