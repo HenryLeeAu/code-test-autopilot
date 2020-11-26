@@ -55,7 +55,7 @@ const App = () => {
             value={itemSize}
             onChange={(e) => setItemSize(e.target.value)}
           />
-          spx
+          px
           <div>
             <CountrySelector
               countryList={countryList}
