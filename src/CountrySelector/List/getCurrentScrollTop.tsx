@@ -4,6 +4,17 @@ type ParamT = {
   currentIndex: number;
   itemHeight: number;
 };
+
+/**
+ * Get the scroll top distance
+ * @param obj Object with all properties
+ * @param obj.maxVisibleNumber Number of showing on dropdown visible area.
+ * @param obj.position Default position for selecting item when open dropdown.
+ * @param obj.currentIndex The index of selected item.
+ * @param obj.itemHeight The UI height each item.
+ * @returns {number} scroll top number
+ */
+
 const getCurrentScrollTop = ({
   maxVisibleNumber,
   position,
