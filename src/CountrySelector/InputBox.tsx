@@ -2,9 +2,9 @@ import * as React from "react";
 import styled from "styled-components";
 
 import arrowDown from "../images/arrow-down.svg";
-import { RestPropsT } from "./type";
+import { InputRestPropsT } from "./type";
 
-type Props = RestPropsT & {
+type Props = InputRestPropsT & {
   onFocus: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   text: string;

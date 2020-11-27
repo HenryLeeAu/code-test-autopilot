@@ -4,7 +4,7 @@ import styled from "styled-components";
 import InputBox from "./InputBox";
 import List from "./List";
 import { CountryItemT } from "../redux/type";
-import { RestPropsT } from "./type";
+import { InputRestPropsT } from "./type";
 
 const CountrySelectorWrapper = styled.div`
   position: relative;
@@ -16,7 +16,7 @@ type CountryListT = {
   flag: string;
 };
 
-type Props = RestPropsT & {
+type Props = InputRestPropsT & {
   itemHeight?: number;
   onSelect?: (data: any) => void;
   maxVisibleNumber?: number;
