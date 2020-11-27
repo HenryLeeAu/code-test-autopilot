@@ -8,6 +8,6 @@ export interface CountryT {
   list: CountryItemT[];
 }
 
-export interface RootState {
+export interface RootStateT {
   countries: CountryT;
 }

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import { fetchCountryList } from "./redux/actions/countries";
 import CountrySelector from "./CountrySelector";
-import { RootState } from "./redux/type";
+import { RootStateT } from "./redux/type";
 
 const AppWrapper = styled.div`
   max-width: 640px;
@@ -14,9 +14,9 @@ const AppWrapper = styled.div`
 
 const App = () => {
   const dispatch = useDispatch();
-  const countryList = useSelector((state: RootState) => state.countries.list);
+  const countryList = useSelector((state: RootStateT) => state.countries.list);
   const loadingStatus = useSelector(
-    (state: RootState) => state.countries.status
+    (state: RootStateT) => state.countries.status
   );
 
   const [visibleNumber, setVisibleNumber] = React.useState("7");
