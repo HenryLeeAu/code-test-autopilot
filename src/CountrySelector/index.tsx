@@ -4,6 +4,7 @@ import styled from "styled-components";
 import InputBox from "./InputBox";
 import List from "./List";
 import { CountryItemT } from "../redux/type";
+import { RestPropsT } from "./type";
 
 const CountrySelectorWrapper = styled.div`
   position: relative;
@@ -13,12 +14,6 @@ const CountrySelectorWrapper = styled.div`
 type CountryListT = {
   name: string;
   flag: string;
-};
-
-type RestPropsT = {
-  "data-testid"?: string;
-  className?: string;
-  id?: string;
 };
 
 type Props = RestPropsT & {

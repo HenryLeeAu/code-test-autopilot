@@ -2,12 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import arrowDown from "../images/arrow-down.svg";
-
-type RestPropsT = {
-  "data-testid"?: string;
-  className?: string;
-  id?: string;
-};
+import { RestPropsT } from "./type";
 
 type Props = RestPropsT & {
   onFocus: () => void;
