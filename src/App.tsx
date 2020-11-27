@@ -12,6 +12,21 @@ const AppWrapper = styled.div`
   padding-top: 15px;
 `;
 
+const InputWrapper = styled.div`
+  display: flex;
+  padding-bottom: 25px;
+  justify-content: space-between;
+`;
+
+const InputLabel = styled.div`
+  font-size: 12px;
+  color: #212121;
+`;
+const DisplayResultText = styled.div`
+  color: #212121;
+  display: inline;
+  padding-left: 15px;
+`;
 const App = () => {
   const dispatch = useDispatch();
   const countryList = useSelector((state: RootStateT) => state.countries.list);
@@ -40,22 +55,31 @@ const App = () => {
           <h2>
             CountrySelector can also support dynamic item size and position
           </h2>
-          <div>Change visible number</div>
-          <input
-            value={visibleNumber}
-            onChange={(e) => setVisibleNumber(e.target.value)}
-          />
-          <div>Change default position </div>
-          <input
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
-          />
-          <div>Change item size </div>
-          <input
-            value={itemSize}
-            onChange={(e) => setItemSize(e.target.value)}
-          />
-          px
+          <InputWrapper>
+            <div>
+              <InputLabel>Change visible number</InputLabel>
+              <input
+                value={visibleNumber}
+                onChange={(e) => setVisibleNumber(e.target.value)}
+              />
+            </div>
+            <div>
+              <InputLabel>Change default position </InputLabel>
+              <input
+                value={position}
+                onChange={(e) => setPosition(e.target.value)}
+              />
+            </div>
+            <div>
+              <InputLabel>Change item size </InputLabel>
+              <input
+                value={itemSize}
+                onChange={(e) => setItemSize(e.target.value)}
+              />
+              px
+            </div>
+          </InputWrapper>
+
           <div>
             <CountrySelector
               countryList={countryList}
@@ -64,8 +88,10 @@ const App = () => {
               defaultPosition={Number(position)}
               itemHeight={Number(itemSize)}
             />
+            <DisplayResultText>
+              you are selecting {selectedData}
+            </DisplayResultText>
           </div>
-          your are selecting {selectedData}
         </AppWrapper>
       );
     case "LOADING":
