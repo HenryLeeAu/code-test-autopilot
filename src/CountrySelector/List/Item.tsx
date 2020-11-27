@@ -5,7 +5,6 @@ type Props = {
   itemHeight: number;
   name: string;
   flagUrl: string;
-  //onClick: () => void;
   highlight: boolean;
 };
 
