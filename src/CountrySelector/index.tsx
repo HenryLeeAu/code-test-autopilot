@@ -14,7 +14,14 @@ type CountryListT = {
   name: string;
   flag: string;
 };
-type Props = {
+
+type RestPropsT = {
+  "data-testid"?: string;
+  className?: string;
+  id?: string;
+};
+
+type Props = RestPropsT & {
   itemHeight?: number;
   onSelect?: (data: any) => void;
   maxVisibleNumber?: number;

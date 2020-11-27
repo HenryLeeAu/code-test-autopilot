@@ -3,7 +3,13 @@ import styled from "styled-components";
 
 import arrowDown from "../images/arrow-down.svg";
 
-type Props = {
+type RestPropsT = {
+  "data-testid"?: string;
+  className?: string;
+  id?: string;
+};
+
+type Props = RestPropsT & {
   onFocus: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   text: string;
@@ -62,7 +68,6 @@ const InputBox: React.FC<Props> = ({
         value={text}
         isOpen={isOpen}
         flagExist={!!flagSrc}
-        type="text"
       />
       <ArrowIcon src={arrowDown} alt="arrow" />
     </InputWrapper>
