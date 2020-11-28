@@ -54,9 +54,7 @@ const CountrySelector: React.FC<Props> = ({
     setOpen(false);
   };
 
-  const clickAwayListener: any = (
-    e: React.MouseEvent<HTMLDivElement>
-  ): void => {
+  const clickAwayListener = (e: MouseEvent): void => {
     if (
       selectorRef.current &&
       !selectorRef.current.contains(e.target as Node)
