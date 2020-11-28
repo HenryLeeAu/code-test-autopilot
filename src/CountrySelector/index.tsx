@@ -54,22 +54,22 @@ const CountrySelector: React.FC<Props> = ({
     setOpen(false);
   };
 
-  const clickAwayListener = (e: MouseEvent): void => {
-    if (
-      selectorRef.current &&
-      !selectorRef.current.contains(e.target as Node)
-    ) {
-      setOpen(false);
-    }
-  };
-
   React.useEffect(() => {
+    const clickAwayListener = (e: MouseEvent): void => {
+      if (
+        selectorRef.current &&
+        !selectorRef.current.contains(e.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+
     document.addEventListener("click", clickAwayListener);
 
     return () => {
       document.removeEventListener("click", clickAwayListener);
     };
-  }, []);
+  }, [selectorRef]);
 
   return (
     <ThemeProvider theme={theme}>
