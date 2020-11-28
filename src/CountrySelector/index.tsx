@@ -1,12 +1,13 @@
 import * as React from "react";
 import styled, { ThemeProvider } from "styled-components";
 
+import theme from "./theme";
+
 import InputBox from "./InputBox";
 import List from "./List";
 import { CountryItemT } from "../redux/type";
-import { InputRestPropsT } from "./type";
 
-import theme from "./theme";
+import { InputRestPropsT } from "./type";
 
 const CountrySelectorWrapper = styled.div`
   position: relative;

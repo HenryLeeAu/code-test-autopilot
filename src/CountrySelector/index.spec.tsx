@@ -46,7 +46,7 @@ describe("<CountrySelector />", () => {
     });
   });
 
-  it("types input to find matched countries", () => {
+  it("types in keyword to find matched countries", () => {
     const props = {
       ...baseProps,
     };

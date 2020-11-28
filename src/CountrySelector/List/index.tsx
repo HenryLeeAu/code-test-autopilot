@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Item from "./Item";
 import getCurrentScrollTop from "./getCurrentScrollTop";
+
 import { CountryItemT } from "../../redux/type";
 
 type Props = {

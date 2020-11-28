@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 import arrowDown from "../images/arrow-down.svg";
+
 import { InputRestPropsT } from "./type";
 
 type Props = InputRestPropsT & {
