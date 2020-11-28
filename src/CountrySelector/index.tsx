@@ -5,27 +5,22 @@ import theme from "./theme";
 
 import InputBox from "./InputBox";
 import List from "./List";
+
 import { CountryItemT } from "../redux/type";
-
 import { InputRestPropsT } from "./type";
-
-const CountrySelectorWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-`;
-
-type CountryListT = {
-  name: string;
-  flag: string;
-};
 
 type Props = InputRestPropsT & {
   itemHeight?: number;
   onSelect?: (data: any) => void;
   maxVisibleNumber?: number;
   defaultPosition?: number;
-  countryList?: CountryListT[];
+  countryList?: CountryItemT[];
 };
+
+const CountrySelectorWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`;
 
 const CountrySelector: React.FC<Props> = ({
   countryList = [],

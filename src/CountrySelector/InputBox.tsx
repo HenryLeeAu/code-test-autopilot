@@ -12,12 +12,14 @@ type Props = InputRestPropsT & {
   isOpen: boolean;
   flagSrc?: string;
 };
+
 const InputWrapper = styled.div`
   width: 200px;
   height: 36px;
   position: relative;
 `;
-const Input = styled.input<{ isOpen: boolean; flagExist: boolean }>`
+
+const Input = styled.input<{ isOpen: boolean; isFlagExist: boolean }>`
   box-sizing: border-box;
   outline: none;
   border-radius: ${({ theme }) => theme.radius.sm};
@@ -26,8 +28,9 @@ const Input = styled.input<{ isOpen: boolean; flagExist: boolean }>`
   width: inherit;
   height: inherit;
   font-size: ${({ theme }) => theme.fontSize.md};
-  padding: ${({ flagExist }) => ` 0 24px 0 ${flagExist ? 40 : 14}px`};
+  padding: ${({ isFlagExist }) => ` 0 24px 0 ${isFlagExist ? 40 : 14}px`};
 `;
+
 const ArrowIcon = styled.img`
   width: 9px;
   position: absolute;
@@ -41,6 +44,7 @@ const FlagIcon = styled.img`
   left: 14px;
   top: 12px;
 `;
+
 const InputBox: React.FC<Props> = ({
   onFocus,
   onChange,
@@ -49,9 +53,11 @@ const InputBox: React.FC<Props> = ({
   flagSrc = "",
   ...restProps
 }) => {
+  const isFlagExist = !!flagSrc;
+
   return (
     <InputWrapper onClick={onFocus}>
-      {flagSrc && (
+      {isFlagExist && (
         <FlagIcon
           src={flagSrc}
           alt="arrow"
@@ -64,7 +70,7 @@ const InputBox: React.FC<Props> = ({
         onChange={onChange}
         value={text}
         isOpen={isOpen}
-        flagExist={!!flagSrc}
+        isFlagExist={isFlagExist}
       />
       <ArrowIcon src={arrowDown} alt="arrow" />
     </InputWrapper>
