@@ -20,7 +20,8 @@ const Input = styled.input<{ isOpen: boolean; flagExist: boolean }>`
   box-sizing: border-box;
   outline: none;
   border-radius: 4px;
-  border: ${({ isOpen }) => `2px solid ${isOpen ? "#4821ff" : "#fff"}`};
+  border: ${({ isOpen, theme }) =>
+    `2px solid ${isOpen ? theme.colors.primary : "#fff"}`};
   width: inherit;
   height: inherit;
   font-size: 14px;

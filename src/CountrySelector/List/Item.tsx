@@ -15,11 +15,12 @@ const ItemWrapper = styled.div<{ itemHeight: number; highlight: boolean }>`
   align-items: center;
   cursor: pointer;
   padding-left: 23px;
-  color: ${({ highlight }) => (highlight ? "#4821ff" : "#000")};
+  color: ${({ highlight, theme }) =>
+    highlight ? theme.colors.primary : "#000"};
   background: ${({ highlight }) => (highlight ? "#fbfafa" : "#fff")};
 
   &:hover {
-    color: #4821ff;
+    color: ${(props) => props.theme.colors.primary};
     background: #fbfafa;
   }
 `;
@@ -34,10 +35,11 @@ const Text = styled.div<{ itemHeight: number; highlight: boolean }>`
   display: flex;
   align-items: center;
   white-space: nowrap;
-  color: ${({ highlight }) => (highlight ? "#4821ff" : "#000")};
+  color: ${({ highlight, theme }) =>
+    highlight ? theme.colors.primary : "#000"};
   background: ${({ highlight }) => (highlight ? "#fbfafa" : "#fff")};
   &:hover {
-    color: #4821ff;
+    color: ${(props) => props.theme.colors.primary};
     background: #fbfafa;
   }
 `;

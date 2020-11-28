@@ -82,6 +82,7 @@ const List: React.FC<Props> = ({
       {countryList?.filter(listFilter).map((country) => (
         <div key={country.name} onClick={() => changeSelectedCountry(country)}>
           <Item
+            key={country.name}
             name={country.name}
             itemHeight={itemHeight}
             flagUrl={country.flag}

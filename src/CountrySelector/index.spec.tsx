@@ -2,6 +2,8 @@ import * as React from "react";
 import { render, fireEvent } from "@testing-library/react";
 
 import CountrySelector from ".";
+import { ThemeProvider } from "styled-components";
+import theme from "../theme";
 
 describe("<CountrySelector />", () => {
   const baseProps = {
@@ -25,7 +27,9 @@ describe("<CountrySelector />", () => {
       ...baseProps,
     };
     const { getAllByTestId, getByTestId } = render(
-      <CountrySelector {...props} data-testid="country-selector" />
+      <ThemeProvider theme={theme}>
+        <CountrySelector {...props} data-testid="country-selector" />
+      </ThemeProvider>
     );
 
     expect((getByTestId("country-selector") as HTMLInputElement).value).toBe(
@@ -51,7 +55,9 @@ describe("<CountrySelector />", () => {
       ...baseProps,
     };
     const { getByTestId, getAllByTestId } = render(
-      <CountrySelector {...props} data-testid="country-selector" />
+      <ThemeProvider theme={theme}>
+        <CountrySelector {...props} data-testid="country-selector" />
+      </ThemeProvider>
     );
 
     fireEvent.change(getByTestId("country-selector"), {
@@ -67,7 +73,9 @@ describe("<CountrySelector />", () => {
       onSelect: jest.fn(),
     };
     const { getByTestId, getByText } = render(
-      <CountrySelector {...props} data-testid="country-selector" />
+      <ThemeProvider theme={theme}>
+        <CountrySelector {...props} data-testid="country-selector" />
+      </ThemeProvider>
     );
 
     fireEvent.click(getByText("Australia"));

@@ -6,10 +6,11 @@ import { fetchCountryList } from "./redux/actions/countries";
 import CountrySelector from "./CountrySelector";
 import { RootStateT } from "./redux/type";
 
-const AppWrapper = styled.div`
+const AppWrapper = styled.div<{ theme: any }>`
   max-width: 640px;
   margin: 0 auto;
   padding-top: 15px;
+  background: ${({ theme }) => theme.primary};
 `;
 
 const InputWrapper = styled.div`
