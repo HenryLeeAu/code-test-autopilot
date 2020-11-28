@@ -10,7 +10,7 @@ type Props = {
 
 const ItemWrapper = styled.div<{ itemHeight: number; highlight: boolean }>`
   display: flex;
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fontSize.md};
   height: ${({ itemHeight }) => `${itemHeight}px`};
   align-items: center;
   cursor: pointer;

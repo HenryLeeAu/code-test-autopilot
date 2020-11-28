@@ -19,12 +19,12 @@ const InputWrapper = styled.div`
 const Input = styled.input<{ isOpen: boolean; flagExist: boolean }>`
   box-sizing: border-box;
   outline: none;
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.radius.sm};
   border: ${({ isOpen, theme }) =>
     `2px solid ${isOpen ? theme.colors.primary : "#fff"}`};
   width: inherit;
   height: inherit;
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fontSize.md};
   padding: ${({ flagExist }) => ` 0 24px 0 ${flagExist ? 40 : 14}px`};
 `;
 const ArrowIcon = styled.img`

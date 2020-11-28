@@ -5,5 +5,11 @@ declare module "styled-components" {
     colors: {
       primary: string;
     };
+    fontSize: {
+      md: string;
+    };
+    radius: {
+      sm: string;
+    };
   }
 }

@@ -19,7 +19,7 @@ type Props = {
 const ListWrapper = styled.div<{ isOpen: boolean; maxHeight: number }>`
   box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.15);
   background: #fff;
-  border-radius: 4px;
+  border-radius: ${({ theme }) => theme.radius.sm};
   width: 200px;
   display: ${(props) => (props.isOpen ? "block" : "none")};
   max-height: ${(props) => `${props.maxHeight}px`};
