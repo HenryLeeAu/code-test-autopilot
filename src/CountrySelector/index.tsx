@@ -1,10 +1,12 @@
 import * as React from "react";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 
 import InputBox from "./InputBox";
 import List from "./List";
 import { CountryItemT } from "../redux/type";
 import { InputRestPropsT } from "./type";
+
+import theme from "./theme";
 
 const CountrySelectorWrapper = styled.div`
   position: relative;
@@ -76,26 +78,28 @@ const CountrySelector: React.FC<Props> = ({
   }, []);
 
   return (
-    <CountrySelectorWrapper ref={selectorRef}>
-      <InputBox
-        {...restProps}
-        onFocus={onInputFocus}
-        onChange={onTextChange}
-        text={searchText}
-        isOpen={isOpen}
-        flagSrc={selectedCountry?.flag}
-      />
-      <List
-        isOpen={isOpen}
-        countryList={countryList}
-        currentText={searchText}
-        changeSelectedCountry={changeSelectedCountry}
-        selectedCountry={selectedCountry}
-        maxVisibleNumber={maxVisibleNumber}
-        defaultPosition={defaultPosition}
-        itemHeight={itemHeight}
-      />
-    </CountrySelectorWrapper>
+    <ThemeProvider theme={theme}>
+      <CountrySelectorWrapper ref={selectorRef}>
+        <InputBox
+          {...restProps}
+          onFocus={onInputFocus}
+          onChange={onTextChange}
+          text={searchText}
+          isOpen={isOpen}
+          flagSrc={selectedCountry?.flag}
+        />
+        <List
+          isOpen={isOpen}
+          countryList={countryList}
+          currentText={searchText}
+          changeSelectedCountry={changeSelectedCountry}
+          selectedCountry={selectedCountry}
+          maxVisibleNumber={maxVisibleNumber}
+          defaultPosition={defaultPosition}
+          itemHeight={itemHeight}
+        />
+      </CountrySelectorWrapper>
+    </ThemeProvider>
   );
 };
 
