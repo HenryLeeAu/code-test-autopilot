@@ -55,6 +55,8 @@ const CountrySelector: React.FC<Props> = ({
   };
 
   React.useEffect(() => {
+    if (!selectorRef.current) return;
+
     const clickAwayListener = (e: MouseEvent): void => {
       if (
         selectorRef.current &&
