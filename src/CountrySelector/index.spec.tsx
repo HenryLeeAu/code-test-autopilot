@@ -66,16 +66,19 @@ describe("<CountrySelector />", () => {
       ...baseProps,
       onSelect: jest.fn(),
     };
+
+    const targetCountryObj = props.countryList[3];
+
     const { getByTestId, getByText } = render(
       <CountrySelector {...props} data-testid="country-selector" />
     );
 
-    fireEvent.click(getByText("Australia"));
+    fireEvent.click(getByText(targetCountryObj.name));
 
     expect((getByTestId("country-selector") as HTMLInputElement).value).toBe(
-      "Australia"
+      targetCountryObj.name
     );
 
-    expect(props.onSelect).toHaveBeenCalledWith(props.countryList[3]);
+    expect(props.onSelect).toHaveBeenCalledWith(targetCountryObj);
   });
 });
