@@ -8,10 +8,11 @@ import List from "./List";
 
 import { CountryItemT } from "../redux/type";
 import { InputRestPropsT } from "./type";
+import useClcikAway from "./useClickAway";
 
 type Props = InputRestPropsT & {
   itemHeight?: number;
-  onSelect?: (data: any) => void;
+  onSelect?: (data: CountryItemT) => void;
   maxVisibleNumber?: number;
   defaultPosition?: number;
   countryList?: CountryItemT[];
@@ -54,24 +55,9 @@ const CountrySelector: React.FC<Props> = ({
     setOpen(false);
   };
 
-  React.useEffect(() => {
-    if (!selectorRef.current) return;
-
-    const clickAwayListener = (e: MouseEvent): void => {
-      if (
-        selectorRef.current &&
-        !selectorRef.current.contains(e.target as Node)
-      ) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener("click", clickAwayListener);
-
-    return () => {
-      document.removeEventListener("click", clickAwayListener);
-    };
-  }, [selectorRef]);
+  useClcikAway(selectorRef, () => {
+    setOpen(false);
+  });
 
   return (
     <ThemeProvider theme={theme}>
