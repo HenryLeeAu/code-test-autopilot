@@ -72,7 +72,7 @@ const List: React.FC<Props> = ({
   const listFilter = ({ name }: { name: string }) =>
     // show all countries when selectedCountry exists
     // or show matched string countries list ( include match empty string '')
-    selectedCountry || name.toLowerCase().includes(currentText.toLowerCase());
+    !!selectedCountry || name.toLowerCase().includes(currentText.toLowerCase());
 
   return (
     <ListWrapper
