@@ -9,20 +9,26 @@ import reducers from "./redux/reducers";
 import App from "./App";
 
 describe("<App />", () => {
+  const tarUrl = "https://restcountries.eu/rest/v2";
+
+  const resData = [
+    {
+      name: "Country1",
+      flag: "url1",
+    },
+    {
+      name: "Country2",
+      flag: "url1",
+    },
+  ];
+
+  const initStore = () => {
+    return createStore(reducers, applyMiddleware(thunk));
+  };
+
   const server = setupServer(
-    rest.get("https://restcountries.eu/rest/v2", (req, res, ctx) => {
-      return res(
-        ctx.json([
-          {
-            name: "Country1",
-            flag: "url1",
-          },
-          {
-            name: "Country2",
-            flag: "url1",
-          },
-        ])
-      );
+    rest.get(tarUrl, (res, ctx) => {
+      return res(ctx.json(resData));
     })
   );
 
@@ -31,50 +37,44 @@ describe("<App />", () => {
   afterAll(() => server.close());
 
   it("render loading screen", async () => {
-    const store = createStore(reducers, applyMiddleware(thunk));
-
-    const { getByTestId } = render(
-      <Provider store={store}>
+    const { queryByTestId } = render(
+      <Provider store={initStore()}>
         <App />
       </Provider>
     );
 
     await waitFor(() => {
-      expect(getByTestId("screen-loading")).not.toBeNull();
+      expect(queryByTestId("screen-loading")).toBeTruthy();
     });
   });
 
   it("render success screen", async () => {
-    const store = createStore(reducers, applyMiddleware(thunk));
-
-    const { getByTestId, getAllByText } = render(
-      <Provider store={store}>
+    const { queryByTestId, queryAllByText } = render(
+      <Provider store={initStore()}>
         <App />
       </Provider>
     );
-    await waitFor(() => getByTestId("screen-success"));
+    await waitFor(() => queryByTestId("screen-success"));
 
-    expect(getAllByText("Country1").length).toBe(2);
-    expect(getAllByText("Country2").length).toBe(2);
+    expect(queryAllByText(resData[0].name)).toBeTruthy();
+    expect(queryAllByText(resData[1].name)).toBeTruthy();
   });
 
   it("render failed screen", async () => {
     server.use(
-      rest.get("https://restcountries.eu/rest/v2", (req, res, ctx) => {
+      rest.get(tarUrl, (res, ctx) => {
         return res(ctx.status(500));
       })
     );
 
-    const store = createStore(reducers, applyMiddleware(thunk));
-
-    const { getByTestId } = render(
-      <Provider store={store}>
+    const { queryByTestId } = render(
+      <Provider store={initStore()}>
         <App />
       </Provider>
     );
 
     await waitFor(() => {
-      expect(getByTestId("screen-failed")).not.toBeNull();
+      expect(queryByTestId("screen-failed")).toBeTruthy();
     });
   });
 });
