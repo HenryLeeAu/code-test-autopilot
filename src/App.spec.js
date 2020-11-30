@@ -36,7 +36,7 @@ describe("<App />", () => {
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close());
 
-  it("render loading screen", async () => {
+  it("renders loading screen", async () => {
     const { queryByTestId } = render(
       <Provider store={initStore()}>
         <App />
@@ -48,7 +48,7 @@ describe("<App />", () => {
     });
   });
 
-  it("render success screen", async () => {
+  it("renders success screen", async () => {
     const { queryByTestId, queryAllByText } = render(
       <Provider store={initStore()}>
         <App />
@@ -60,7 +60,7 @@ describe("<App />", () => {
     expect(queryAllByText(resData[1].name)).toBeTruthy();
   });
 
-  it("render failed screen", async () => {
+  it("renders failed screen", async () => {
     server.use(
       rest.get(tarUrl, (res, ctx) => {
         return res(ctx.status(500));
