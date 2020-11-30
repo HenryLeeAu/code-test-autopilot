@@ -40,12 +40,14 @@ describe("<App />", () => {
       reducers,
       composeEnhancers(applyMiddleware(thunk))
     );
-    const { getByTestId, getAllByText } = render(
+    const { getByTestId } = render(
       <Provider store={store}>
         <App />
       </Provider>
     );
-    expect(getByTestId("screen-loading")).not.toBeNull();
+    await waitFor(() => {
+      expect(getByTestId("screen-loading")).not.toBeNull();
+    });
   });
   it("render success screen", async () => {
     const store = createStore(
