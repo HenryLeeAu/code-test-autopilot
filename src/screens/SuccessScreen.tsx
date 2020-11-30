@@ -37,7 +37,7 @@ const SuccessScreen: React.FC<Props> = ({ countryList }) => {
   const [selectedData, setSelectedData] = React.useState("");
 
   return (
-    <AppWrapper>
+    <AppWrapper data-testid="screen-success">
       <h2>Default example</h2>
       <CountrySelector
         countryList={countryList}
